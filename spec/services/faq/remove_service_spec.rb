@@ -5,7 +5,7 @@ describe FaqModule::RemoveService do
         context 'Valid Id' do
             before do
                 faq = create(:faq)
-                @removeService = FaqModule::RemoveService.new({id: faq.id})
+                @removeService = FaqModule::RemoveService.new({'id' => faq.id})
             end
 
             it 'Return success message' do
@@ -22,7 +22,7 @@ describe FaqModule::RemoveService do
 
         context 'Invalid Id' do
             it 'return error message' do
-                @removeService = FaqModule::RemoveService.new({id: rand(1..9999)})
+                @removeService = FaqModule::RemoveService.new({'id' => rand(1..9999)})
                 response = @removeService.call()
                 expect(response).to match('Questão inválida, verifique o Id')
             end

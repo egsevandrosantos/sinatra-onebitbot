@@ -1,7 +1,7 @@
 module FaqModule
     class ListService
         def initialize(params, action)
-            @query = params[:query]
+            @query = params['query']
             @action = action
         end
 

@@ -28,7 +28,7 @@ describe FaqModule::ListService do
         context 'search command' do
             context 'Empty query' do
                 it 'return don\'t find message' do
-                    @listService = FaqModule::ListService.new({query: ''}, 'search')
+                    @listService = FaqModule::ListService.new({'query' => ''}, 'search')
                     response = @listService.call()
                     expect(response).to match('Nada encontrado')
                 end
@@ -37,7 +37,7 @@ describe FaqModule::ListService do
             context 'Valid query' do
                 it 'find question and answer in response' do
                     faq = create(:faq)
-                    @listService = FaqModule::ListService.new({query: faq.question.split(' ').sample}, 'search')
+                    @listService = FaqModule::ListService.new({'query' => faq.question.split(' ').sample}, 'search')
                     response = @listService.call()
                     expect(response).to match(faq.question)
                     expect(response).to match(faq.answer)
@@ -48,7 +48,7 @@ describe FaqModule::ListService do
         context 'search by hashtag command' do
             context 'Invalid hashtag' do
                 it 'return don\'t find message' do
-                    @listService = FaqModule::ListService.new({query: ''}, 'search_by_hashtag')
+                    @listService = FaqModule::ListService.new({'query' => ''}, 'search_by_hashtag')
                     response = @listService.call()
                     expect(response).to match('Nada encontrado')
                 end
@@ -59,7 +59,7 @@ describe FaqModule::ListService do
                     faq = create(:faq)
                     hashtag = create(:hashtag)
                     create(:faq_hashtag, faq: faq, hashtag: hashtag)
-                    @listService = FaqModule::ListService.new({query: hashtag.name}, 'search_by_hashtag')
+                    @listService = FaqModule::ListService.new({'query' => hashtag.name}, 'search_by_hashtag')
                     response = @listService.call()
                     expect(response).to match(faq.question)
                     expect(response).to match(faq.answer)
