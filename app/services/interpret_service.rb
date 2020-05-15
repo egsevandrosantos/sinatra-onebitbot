@@ -6,7 +6,7 @@ class InterpretService
         when 'create'
             FaqModule::CreateService.new(params).call()
         when 'remove'
-            FaqModule::CreateService.new(params).call()
+            FaqModule::RemoveService.new(params).call()
         when 'help'
             HelpService.call()
         else
