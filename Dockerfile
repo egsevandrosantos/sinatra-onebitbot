@@ -1,6 +1,6 @@
 FROM ruby:2.5.1-slim
 RUN apt-get update && apt-get install -qq -y --no-install-recommends \
-    build-essential libpq-dev
+    build-essential libpq-dev nano
 RUN gem install bundler
 ENV INSTALL_PATH /onebitbot
 RUN mkdir -p $INSTALL_PATH

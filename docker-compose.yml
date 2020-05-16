@@ -10,6 +10,8 @@ services:
         - POSTGRES_PASSWORD=postgres
 
   app:
+    tty: true
+    stdin_open: true
     depends_on: 
         - db
     build: .
